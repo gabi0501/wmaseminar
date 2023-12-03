@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			http-equiv="Content-Security-Policy"
+			content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"
+		/>
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com%22%3E/" />
+		<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="icon" type="image/x-icon" href="./img/favicon.png" />
+		<link rel="stylesheet" href="css/index.css" />
+		<title>Kako liječiti</title>
+	</head>
+
+	<body>
+		<nav id="web-navigacija">
+			<a href="/"><img id="velikiLogo" src="./img/logo.png" /></a>
+
+			<button id="gumbhome" class="active" onclick="pokaziPocetnu()">Početna</button>
+			<button id="gumbprofil" onclick="pokaziMojProfil()">Moj profil</button>
+		</nav>
+		<div class="margina">
+			<a href="/"><img id="logo" src="./img/logo.png" /></a>
+			<div id="home">
+				<p class="podnaslov">Kategorije</p>
+				<div class="gumbovi">
+					<input type="image" class="gumbpocetna" src="./img/gumb-01.png" onclick="pokaziLijekove()" />
+					<input type="image" class="gumbpocetna" src="./img/gumb-02.png" onclick="pokaziBolesti()" />
+					<input type="image" class="gumbpocetna" src="./img/gumb-03.png" onclick="pokaziNarodnu()" />
+				</div>
+				<div class="gumboviveliki" id="velikigumbovi">
+					<input type="image" class="velikigumbpocetna" src="./img/velikigumb1.png" onclick="pokaziLijekove()" />
+					<input type="image" class="velikigumbpocetna" src="./img/velikigumb2.png" onclick="pokaziBolesti()" />
+					<input type="image" class="velikigumbpocetna" src="./img/velikigumb3.png" onclick="pokaziNarodnu()" />
+				</div>
+			</div>
+			<div id="mojProfil" class="podnaslov hide margina">
+				<div class="flexrow">
+					<p class="podnaslov">Moj profil</p>
+					<div class="radiowrap">
+						<div class="alignitems">
+							<input type="radio" class="radio" name="spol" value="musko" />
+							muško
+						</div>
+						<div class="alignitems">
+							<input type="radio" class="radio" name="spol" value="zensko" checked />
+							žensko
+						</div>
+					</div>
+					<form>
+						<input type="text" id="ime" name="Ime" placeholder="Ime" />
+						<input type="text" id="prezime" name="Prezime" placeholder="Prezime" />
+						<input type="text" id="dob" name="Dob" placeholder="Dob" />
+					</form>
+					<p class="podnaslov">Indeks tjelesne mase</p>
+					<input type="text" id="tezina" placeholder="Težina" />
+					<input type="text" id="visina" placeholder="Visina" />
+					<div class="gumbred">
+						<button onclick="izracunajIndeks()" class="gumbizracun">Izračunaj</button>
+						<button onclick="Reset()" class="gumbizracun">Resetiraj</button>
+					</div>
+				</div>
+
+				<div>
+					<img id="rezultatimg" src="" alt="" />
+					<div id="rezultat"></div>
+				</div>
+			</div>
+			<div id="filter-container2" class="hide">
+				<button onclick="filterBolesti('A')">A</button>
+				<button onclick="filterBolesti('B')">B</button>
+				<button onclick="filterBolesti('C')">C</button>
+				<button onclick="filterBolesti('D')">D</button>
+				<button onclick="filterBolesti('E')">E</button>
+				<button onclick="filterBolesti('F')">F</button>
+				<button onclick="filterBolesti('G')">G</button>
+				<button onclick="filterBolesti('H')">H</button>
+				<button onclick="filterBolesti('I')">I</button>
+				<button onclick="filterBolesti('J')">J</button>
+				<button onclick="filterBolesti('K')">K</button>
+				<button onclick="filterBolesti('L')">L</button>
+				<button onclick="filterBolesti('M')">M</button>
+				<button onclick="filterBolesti('N')">N</button>
+				<button onclick="filterBolesti('O')">O</button>
+				<button onclick="filterBolesti('P')">P</button>
+				<button onclick="filterBolesti('R')">R</button>
+				<button onclick="filterBolesti('S')">S</button>
+				<button onclick="filterBolesti('T')">T</button>
+				<button onclick="filterBolesti('U')">U</button>
+				<button onclick="filterBolesti('V')">V</button>
+				<button onclick="filterBolesti('Z')">Z</button>
+				<button onclick="pokaziSveBolesti()">Sve</button>
+			</div>
+			<div id="bolesti" class="podnaslov" hidden>
+				<p class="podnaslov">Popis bolesti i medicinskih stanja</p>
+				<div id="podaci"></div>
+			</div>
+			<div id="filter-container" class="hide">
+				<button onclick="filterLijekovi('A')">A</button>
+				<button onclick="filterLijekovi('B')">B</button>
+				<button onclick="filterLijekovi('C')">C</button>
+				<button onclick="filterLijekovi('D')">D</button>
+				<button onclick="filterLijekovi('E')">E</button>
+				<button onclick="filterLijekovi('F')">F</button>
+				<button onclick="filterLijekovi('G')">G</button>
+				<button onclick="filterLijekovi('H')">H</button>
+				<button onclick="filterLijekovi('I')">I</button>
+				<button onclick="filterLijekovi('J')">J</button>
+				<button onclick="filterLijekovi('K')">K</button>
+				<button onclick="filterLijekovi('L')">L</button>
+				<button onclick="filterLijekovi('M')">M</button>
+				<button onclick="filterLijekovi('N')">N</button>
+				<button onclick="filterLijekovi('O')">O</button>
+				<button onclick="filterLijekovi('P')">P</button>
+				<button onclick="filterLijekovi('R')">R</button>
+				<button onclick="filterLijekovi('S')">S</button>
+				<button onclick="filterLijekovi('T')">T</button>
+				<button onclick="filterLijekovi('U')">U</button>
+				<button onclick="filterLijekovi('V')">V</button>
+				<button onclick="filterLijekovi('Z')">Z</button>
+				<button onclick="pokaziSveLijekove()">Sve</button>
+			</div>
+
+			<div id="lijekovi" class="podnaslov" hidden>
+				<p class="podnaslov">Popis lijekova</p>
+				<div id="podacilijekovi"></div>
+			</div>
+			<div id="filter-container3" class="hide">
+				<button onclick="prirodniLijekovi('A')">A</button>
+				<button onclick="prirodniLijekovi('B')">B</button>
+				<button onclick="prirodniLijekovi('C')">C</button>
+				<button onclick="prirodniLijekovi('D')">D</button>
+				<button onclick="prirodniLijekovi('E')">E</button>
+				<button onclick="prirodniLijekovi('F')">F</button>
+				<button onclick="prirodniLijekovi('G')">G</button>
+				<button onclick="prirodniLijekovi('H')">H</button>
+				<button onclick="prirodniLijekovi('I')">I</button>
+				<button onclick="prirodniLijekovi('J')">J</button>
+				<button onclick="prirodniLijekovi('K')">K</button>
+				<button onclick="prirodniLijekovi('L')">L</button>
+				<button onclick="prirodniLijekovi('M')">M</button>
+				<button onclick="prirodniLijekovi('N')">N</button>
+				<button onclick="prirodniLijekovi('O')">O</button>
+				<button onclick="prirodniLijekovi('P')">P</button>
+				<button onclick="prirodniLijekovi('R')">R</button>
+				<button onclick="prirodniLijekovi('S')">S</button>
+				<button onclick="prirodniLijekovi('T')">T</button>
+				<button onclick="prirodniLijekovi('U')">U</button>
+				<button onclick="prirodniLijekovi('V')">V</button>
+				<button onclick="prirodniLijekovi('Z')">Z</button>
+				<button onclick="pokaziSvePrirodneLijekove()">Sve</button>
+			</div>
+			<div id="prirodni" class="podnaslov" hidden>
+				<p class="podnaslov">Popis prirodnih lijekova</p>
+				<div id="podaciprirodni"></div>
+			</div>
+		</div>
+		<nav id="navigacija">
+			<button id="gumbhomeikona" class="active" onclick="pokaziPocetnu()">
+				<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+					<path
+						d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
+					/>
+				</svg>
+			</button>
+			<button id="gumbprofilikona" onclick="pokaziMojProfil()">
+				<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+					<path
+						d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
+					/>
+				</svg>
+			</button>
+		</nav>
+	</body>
+	<script src="cordova.js"></script>
+	<script src="js/index.js"></script>
+</html>
